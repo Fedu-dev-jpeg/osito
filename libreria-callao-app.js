@@ -466,6 +466,23 @@
   function addResponsiveAndAdminStyles() {
     const style = document.createElement("style");
     style.textContent = `
+      body > x-dc > div {
+        width: min(100%, 1320px) !important;
+        padding: 18px !important;
+        box-sizing: border-box !important;
+      }
+      x-import[component-from-global-scope="ChromeWindow"] {
+        min-width: 0 !important;
+        width: 100% !important;
+        display: block !important;
+      }
+      [data-om-starter="browser-window"] {
+        width: min(100%, 1280px) !important;
+        max-width: calc(100vw - 36px) !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        margin: 0 auto !important;
+      }
       @media (max-width: 900px) {
         body > x-dc > div { width: 100% !important; padding: 0 !important; }
         x-import[component-from-global-scope="ChromeWindow"] { min-width: 0 !important; width: 100% !important; display: block !important; }
