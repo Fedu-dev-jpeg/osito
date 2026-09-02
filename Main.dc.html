@@ -965,8 +965,8 @@ a:hover { color:#8C2C3B; }
 </style>
 </helmet>
 
-<div style="padding:56px 40px 72px; width:max-content; margin:0 auto; background:#DED7C9; font-family:'Lora',Georgia,serif;">
-<x-import component-from-global-scope="ChromeWindow" url="libreriacallao.com.ar" tabs="{{ tabs }}" width="{{ winW }}" height="{{ winH }}" style="flex:none; min-width:1440px" hint-size="1440px,3000px">
+<div style="padding:18px; width:100%; max-width:1320px; margin:0 auto; background:#DED7C9; font-family:'Lora',Georgia,serif; box-sizing:border-box;">
+<x-import component-from-global-scope="ChromeWindow" url="libreriacallao.com.ar" tabs="{{ tabs }}" width="{{ winW }}" height="{{ winH }}" style="flex:none; min-width:0; width:100%;" hint-size="1280px,3000px">
 
 <div style="position:relative; width:100%; min-height:100%; background:#F7F3E9; color:#201F1D; font-family:'Lora',Georgia,serif;">
 
@@ -1267,13 +1267,14 @@ a:hover { color:#8C2C3B; }
 </x-import>
 </div>
 </x-dc>
+<script src="./libreria-callao-app.js"></script>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showGrain&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Ambiente&quot;},&quot;showAnnounce&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Ambiente&quot;},&quot;showBadges&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Productos&quot;}}">
 class Component extends DCLogic {
   renderVals() {
     return {
       tabs: [{ title: 'Librería Callao — Libros y papelería' }, { title: 'Listas escolares 2026' }],
-      winW: 1440,
-      winH: 3180,
+      winW: 1280,
+      winH: 3000,
       showGrain: this.props.showGrain ?? true,
       showAnnounce: this.props.showAnnounce ?? true,
       showBadges: this.props.showBadges ?? true,
