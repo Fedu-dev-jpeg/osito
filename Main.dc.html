@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+/* Classical — design-system tokens and component classes */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Lora:wght@400;600&display=swap');
+
+:root {
+  --color-bg: #f3f2f2;
+  --color-surface: #eae9e9;
+  --color-text: #201f1d;
+  --color-accent: #b68235;
+  --color-accent-2: #ac803e;
+  --color-divider: color-mix(in srgb, #201f1d 16%, transparent);
+
+  --color-neutral-100: #f8f4f4;
+  --color-neutral-200: #eae7e7;
+  --color-neutral-300: #d7d3d3;
+  --color-neutral-400: #bab6b6;
+  --color-neutral-500: #9b9797;
+  --color-neutral-600: #7d7979;
+  --color-neutral-700: #605d5d;
+  --color-neutral-800: #444141;
+  --color-neutral-900: #2d2b2b;
+
+  --color-accent-100: #fff3e4;
+  --color-accent-200: #ffe3bf;
+  --color-accent-300: #facb8d;
+  --color-accent-400: #e1ad66;
+  --color-accent-500: #c28d41;
+  --color-accent-600: #a06f24;
+  --color-accent-700: #7d5411;
+  --color-accent-800: #5a3b0a;
+  --color-accent-900: #3a270d;
+
+  --color-accent-2-100: #fff3e4;
+  --color-accent-2-200: #ffe3be;
+  --color-accent-2-300: #f5cd96;
+  --color-accent-2-400: #dbaf70;
+  --color-accent-2-500: #bc8f4e;
+  --color-accent-2-600: #9b7232;
+  --color-accent-2-700: #79561f;
+  --color-accent-2-800: #573d14;
+  --color-accent-2-900: #382810;
+
+  --font-heading: "Cormorant Garamond", system-ui, sans-serif;
+  --font-heading-weight: 600;
+  --font-body: "Lora", system-ui, sans-serif;
+
+  --space-1: 4.6px;
+  --space-2: 9.2px;
+  --space-3: 13.8px;
+  --space-4: 18.4px;
+  --space-6: 27.6px;
+  --space-8: 36.8px;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 7px;
+
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+
+.plate{filter:sepia(0.22) saturate(0.82) contrast(1.05);box-sizing:border-box;
+  border:6px solid var(--color-surface);outline:1px solid var(--color-divider)}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-size: 15px; line-height: 1.55; font-weight: 400; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 var(--space-2);
+}
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+h3 { font-size: 25px; }
+h4 { font-size: 20px; }
+h5 { font-size: 16px; }
+h6 { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+p { margin: 0 0 var(--space-3); }
+a { color: var(--color-accent); text-underline-offset: 3px; }
+img { display: block; max-width: 100%; }
+figure { margin: 0; }
+figcaption {
+  font-size: 11px; margin-top: var(--space-1);
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+</style>
+<script>
+/* DS bundle */
+(function(){
+var __ds_ns = (window.Classical_classi = window.Classical_classi || {});
+var __ds_scope = {};
+(__ds_ns.__errors = __ds_ns.__errors || []);
+})();
+</script>
+<script>
+/* ChromeWindow — browser window mockup (transpiled from JSX) */
+(function(){
+var R = window.React || { createElement: function(){return null} };
+function ce(){ return R.createElement.apply(R, arguments); }
+
+var CHROME_C = {
+  barBg: '#202124',
+  tabBg: '#35363a',
+  text: '#e8eaed',
+  dim: '#9aa0a6',
+  urlBg: '#282a2d',
+};
+
+function ChromeTrafficLights() {
+  return ce('div', {style: {display:'flex', gap:8, padding:'0 14px'}},
+    ce('div', {style: {width:12, height:12, borderRadius:'50%', background:'#ff5f57'}}),
+    ce('div', {style: {width:12, height:12, borderRadius:'50%', background:'#febc2e'}}),
+    ce('div', {style: {width:12, height:12, borderRadius:'50%', background:'#28c840'}})
+  );
+}
+
+function ChromeTab(props) {
+  var title = props.title || 'New Tab';
+  var active = props.active || false;
+  function curve(flip) {
+    return ce('svg', {width:'8', height:'10', viewBox:'0 0 8 10',
+      style: {position:'absolute', bottom:0, left: flip ? undefined : -8, right: flip ? -8 : undefined, transform: flip ? 'scaleX(-1)' : 'none'}},
+      ce('path', {d:'M0 10C2 9 6 8 8 0V10H0Z', fill: CHROME_C.tabBg})
+    );
+  }
+  return ce('div', {style: {
+    position:'relative', height:34, alignSelf:'flex-end',
+    padding:'0 12px', display:'flex', alignItems:'center', gap:8,
+    background: active ? CHROME_C.tabBg : 'transparent',
+    borderRadius:'8px 8px 0 0', minWidth:120, maxWidth:220,
+    fontFamily:'system-ui, sans-serif', fontSize:12,
+    color: active ? CHROME_C.text : CHROME_C.dim
+  }},
+    active && curve(false),
+    active && curve(true),
+    ce('div', {style: {width:14, height:14, borderRadius:'50%', background:'#5f6368', flexShrink:0}}),
+    ce('span', {style: {flex:1, whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis'}}, title)
+  );
+}
+
+function ChromeTabBar(props) {
+  var tabs = props.tabs || [{title:'New Tab'}];
+  var activeIndex = props.activeIndex || 0;
+  return ce('div', {style: {
+    display:'flex', alignItems:'center', height:44,
+    background: CHROME_C.barBg, paddingRight:8
+  }},
+    ce(ChromeTrafficLights),
+    ce('div', {style: {display:'flex', alignItems:'flex-end', height:'100%', paddingLeft:4, flex:1}},
+      tabs.map(function(t, i) { return ce(ChromeTab, {key:i, title:t.title, active:i === activeIndex}); })
+    )
+  );
+}
+
+function ChromeToolbar(props) {
+  var url = props.url || 'example.com';
+  var iconDot = ce('div', {style: {width:28, height:28, display:'flex', alignItems:'center', justifyContent:'center'}},
+    ce('div', {style: {width:16, height:16, borderRadius:'50%', background: CHROME_C.dim, opacity:0.4}})
+  );
+  return ce('div', {style: {
+    height:40, background: CHROME_C.tabBg,
+    display:'flex', alignItems:'center', gap:4, padding:'0 8px'
+  }},
+    iconDot,
+    ce('div', {style: {
+      flex:1, height:30, borderRadius:15, background: CHROME_C.urlBg,
+      display:'flex', alignItems:'center', gap:8, padding:'0 14px', margin:'0 6px'
+    }},
+      ce('div', {style: {width:12, height:12, borderRadius:'50%', background: CHROME_C.dim, opacity:0.4}}),
+      ce('span', {style: {flex:1, color: CHROME_C.text, fontSize:13, fontFamily:'system-ui, sans-serif'}}, url)
+    ),
+    iconDot
+  );
+}
+
+function ChromeWindow(props) {
+  var tabs = props.tabs || [{title:'New Tab'}];
+  var activeIndex = props.activeIndex || 0;
+  var url = props.url || 'example.com';
+  var width = props.width || 900;
+  var height = props.height || 600;
+  var children = props.children;
+  return ce('div', {'data-om-starter':'browser-window', style: {
+    width:width, height:height, borderRadius:10, overflow:'hidden',
+    boxShadow:'0 24px 80px rgba(0,0,0,0.35), 0 0 0 1px rgba(0,0,0,0.1)',
+    display:'flex', flexDirection:'column', background: CHROME_C.tabBg
+  }},
+    ce(ChromeTabBar, {tabs:tabs, activeIndex:activeIndex}),
+    ce(ChromeToolbar, {url:url}),
+    ce('div', {style: {flex:1, background:'#fff', overflow:'auto'}}, children)
+  );
+}
+
+Object.assign(window, {
+  ChromeWindow: ChromeWindow,
+  ChromeTabBar: ChromeTabBar,
+  ChromeToolbar: ChromeToolbar,
+  ChromeTab: ChromeTab,
+  ChromeTrafficLights: ChromeTrafficLights
+});
+})();
+</script>
+<script>
+/* image-slot custom element */
+(() => {
+  const STATE_FILE = '.image-slots.state.json';
+  const UNSPLASH_HOMEPAGE_HREF =
+    'https://unsplash.com/?utm_source=claude_design&utm_medium=referral';
+  const isUnsplashHost = (u) => {
+    try {
+      return /(^|\.)unsplash\.com$/.test(
+        new URL(u, document.baseURI).hostname.replace(/\.$/, '')
+      );
+    } catch {
+      return false;
+    }
+  };
+  const withReferral = (href) => {
+    try {
+      const u = new URL(href);
+      if (!/(^|\.)unsplash\.com$/.test(u.hostname.replace(/\.$/, ''))) {
+        return href;
+      }
+      if (!u.searchParams.has('utm_source')) {
+        u.searchParams.set('utm_source', 'claude_design');
+      }
+      if (!u.searchParams.has('utm_medium')) {
+        u.searchParams.set('utm_medium', 'referral');
+      }
+      return u.toString();
+    } catch (e) {
+      return href;
+    }
+  };
+  const MAX_DIM = 1200;
+  const ACCEPT = ['image/png', 'image/jpeg', 'image/webp', 'image/avif'];
+
+  const subs = new Set();
+  let slots = {};
+  const tombstones = new Set();
+  let loaded = false;
+  let loadP = null;
+
+  function load() {
+    if (loadP) return loadP;
+    loadP = fetch(STATE_FILE)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (j && typeof j === 'object') {
+          const merged = Object.assign({}, j, slots);
+          for (const k in slots) {
+            if (merged[k] && !merged[k].u && j[k]) {
+              merged[k].u = typeof j[k] === 'string' ? j[k] : j[k].u;
+            }
+          }
+          for (const id of tombstones) delete merged[id];
+          slots = merged;
+        }
+        tombstones.clear();
+      })
+      .catch(() => {})
+      .then(() => { loaded = true; subs.forEach((fn) => fn()); });
+    return loadP;
+  }
+
+  let saving = false;
+  let saveDirty = false;
+  function flushNow() {
+    if (!loaded) return;
+    const w = window.omelette && window.omelette.writeFile;
+    if (!w) return;
+    try { Promise.resolve(w(STATE_FILE, JSON.stringify(slots))).catch(() => {}); } catch (e) {}
+  }
+  function save() {
+    if (saving) { saveDirty = true; return; }
+    const w = window.omelette && window.omelette.writeFile;
+    if (!w) return;
+    saving = true;
+    Promise.resolve(w(STATE_FILE, JSON.stringify(slots)))
+      .catch(() => {})
+      .then(() => { saving = false; if (saveDirty) { saveDirty = false; save(); } });
+  }
+
+  const S_MAX = 5;
+  const clampS = (s) => Math.max(1, Math.min(S_MAX, s));
+
+  function getSlot(id) {
+    const v = slots[id];
+    if (!v) return null;
+    return typeof v === 'string' ? { u: v, s: 1, x: 0, y: 0 } : v;
+  }
+
+  function setSlot(id, val) {
+    if (!id) return;
+    if (val) { slots[id] = val; tombstones.delete(id); }
+    else { delete slots[id]; if (!loaded) tombstones.add(id); }
+    subs.forEach((fn) => fn());
+    if (loaded) save(); else load().then(save);
+  }
+
+  async function toDataUrl(file, targetW) {
+    const bitmap = await createImageBitmap(file);
+    try {
+      const cap = Math.min(MAX_DIM, Math.max(1, Math.round(targetW * 2)) || MAX_DIM);
+      const scale = Math.min(1, cap / Math.max(bitmap.width, bitmap.height));
+      const w = Math.max(1, Math.round(bitmap.width * scale));
+      const h = Math.max(1, Math.round(bitmap.height * scale));
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(bitmap, 0, 0, w, h);
+      return canvas.toDataURL('image/webp', 0.85);
+    } finally {
+      bitmap.close && bitmap.close();
+    }
+  }
+
+  const stylesheet =
+    ':host{display:block;position:relative;' +
+    '  font:13px/1.3 system-ui,-apple-system,sans-serif;' +
+    '  width:100%;height:100%;aspect-ratio:3/2}' +
+    '.empty .cap,.empty .sub{opacity:.75}' +
+    '.frame{position:absolute;inset:0;overflow:hidden;background:rgba(127,127,127,.08)}' +
+    '.frame img{position:absolute;max-width:none;transform:translate(-50%,-50%);' +
+    '  -webkit-user-drag:none;user-select:none;touch-action:none}' +
+    '.spill{position:fixed;margin:0;inset:auto;border:0;padding:0;background:transparent;' +
+    '  overflow:visible;transform:translate(-50%,-50%);z-index:1;cursor:grab;touch-action:none}' +
+    ':host([data-panning]) .spill{cursor:grabbing}' +
+    '.spill .ghost{position:absolute;inset:0;width:100%;height:100%;opacity:.35;' +
+    '  pointer-events:none;-webkit-user-drag:none;user-select:none;' +
+    '  box-shadow:0 0 0 1px rgba(0,0,0,.2),0 12px 32px rgba(0,0,0,.2)}' +
+    '.spill .handle{position:absolute;width:12px;height:12px;border-radius:50%;' +
+    '  background:#fff;box-shadow:0 0 0 1.5px #c96442,0 1px 3px rgba(0,0,0,.3);' +
+    '  transform:translate(-50%,-50%)}' +
+    '.spill .handle[data-c=nw]{left:0;top:0;cursor:nwse-resize}' +
+    '.spill .handle[data-c=ne]{left:100%;top:0;cursor:nesw-resize}' +
+    '.spill .handle[data-c=sw]{left:0;top:100%;cursor:nesw-resize}' +
+    '.spill .handle[data-c=se]{left:100%;top:100%;cursor:nwse-resize}' +
+    ':host([data-reframe]){z-index:10}' +
+    ':host([data-reframe]) .frame{box-shadow:0 0 0 2px #c96442}' +
+    '.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;' +
+    '  justify-content:center;gap:6px;text-align:center;padding:12px;box-sizing:border-box;' +
+    '  cursor:pointer;user-select:none}' +
+    '.empty svg{opacity:.45}' +
+    '.empty .cap{max-width:90%;font-weight:500;letter-spacing:.01em}' +
+    '.empty .sub{font-size:11px}' +
+    '.empty .sub u{text-underline-offset:2px}' +
+    '.empty:hover .sub{opacity:1}' +
+    ':host([data-over]) .frame{outline:2px solid #c96442;outline-offset:-2px;' +
+    '  background:rgba(201,100,66,.10)}' +
+    '.ring{position:absolute;inset:0;pointer-events:none;border:1.5px dashed currentColor;' +
+    '  opacity:.35;transition:border-color .12s,opacity .12s}' +
+    ':host([data-over]) .ring{border-color:#c96442;opacity:1}' +
+    ':host([data-filled]) .ring{display:none}' +
+    '.ctl{position:absolute;inset:auto;top:8px;right:8px;margin:0;border:0;padding:0;' +
+    '  background:transparent;overflow:visible;' +
+    '  display:flex;gap:6px;opacity:0;pointer-events:none;transition:opacity .12s;z-index:2;' +
+    '  white-space:nowrap}' +
+    '.ctl:popover-open{position:fixed;inset:auto;transform:translateX(-100%)}' +
+    ':host([data-filled][data-editable]:hover) .ctl,:host([data-reframe]) .ctl' +
+    '  {opacity:1;pointer-events:auto}' +
+    '.ctl button{appearance:none;border:0;border-radius:6px;padding:5px 10px;cursor:pointer;' +
+    '  background:rgba(0,0,0,.65);color:#fff;font:11px/1 system-ui,-apple-system,sans-serif;' +
+    '  backdrop-filter:blur(6px)}' +
+    '.ctl button:hover{background:rgba(0,0,0,.8)}' +
+    '.err{position:absolute;left:8px;bottom:8px;right:8px;color:#b3261e;font-size:11px;' +
+    '  background:rgba(255,255,255,.85);padding:4px 6px;border-radius:5px;pointer-events:none}' +
+    ':host([data-swapping]) .frame img{visibility:hidden}' +
+    '.loading{position:absolute;inset:0;display:none;align-items:center;' +
+    '  justify-content:center;pointer-events:none}' +
+    ':host([data-swapping]) .loading{display:flex}' +
+    '.loading::after{content:"";width:22px;height:22px;border-radius:50%;' +
+    '  border:2px solid rgba(127,127,127,.25);border-top-color:currentColor;' +
+    '  animation:om-slot-spin .7s linear infinite}' +
+    '@keyframes om-slot-spin{to{transform:rotate(360deg)}}' +
+    '@media (prefers-reduced-motion:reduce){.loading::after{animation:none}}' +
+    '.credit{position:absolute;left:6px;bottom:6px;max-width:calc(100% - 12px);display:none;' +
+    '  padding:3px 7px;border-radius:5px;background:rgba(0,0,0,.55);color:#fff;' +
+    '  font:10px/1.2 system-ui,-apple-system,sans-serif;text-decoration:none;' +
+    '  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;backdrop-filter:blur(6px)}' +
+    '.credit a{color:inherit;text-decoration:none}' +
+    '.credit a:hover,.credit a:focus-visible{text-decoration:underline}' +
+    ':host([data-filled][data-credit]) .credit{display:block}' +
+    ':host-context([data-om-exporting]) .ctl,' +
+    ':host-context([data-om-exporting]) .credit{display:none !important}' +
+    '@media print{.ctl,.credit{display:none !important}}' +
+    '.attr-error{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;' +
+    '  justify-content:center;gap:6px;text-align:center;padding:12px;box-sizing:border-box;' +
+    '  background:#f2f1ef;color:#6e6c66;user-select:none;' +
+    '  font:13px/1.45 system-ui,-apple-system,sans-serif}' +
+    '.attr-error svg{opacity:.55}' +
+    '.attr-error .cap{max-width:92%;font-weight:500;letter-spacing:.01em}' +
+    ':host([data-attribution-error]) .attr-error{display:flex}' +
+    ':host([data-attribution-error]) .ring{display:none}';
+
+  const icon =
+    '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
+    '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>' +
+    '<path d="m21 15-5-5L5 21"/></svg>';
+
+  const warnIcon =
+    '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
+    '<path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/>' +
+    '<path d="M12 9v4"/><path d="M12 17h.01"/></svg>';
+
+  class ImageSlot extends HTMLElement {
+    static get observedAttributes() {
+      return ['shape', 'radius', 'mask', 'fit', 'placeholder', 'src', 'id', 'credit', 'credit-href'];
+    }
+
+    static cloneSlot(fromId, isFree) {
+      if (typeof fromId !== 'string' || !fromId) return null;
+      if (!loaded) return null;
+      const stem = fromId.replace(/-\d+$/, '') || fromId;
+      for (let n = 2; n < 100; n++) {
+        const toId = stem + '-' + n;
+        if (toId === fromId) continue;
+        if (slots[toId] !== undefined) {
+          const prev = getSlot(toId);
+          const cur = getSlot(fromId);
+          if (!(prev && cur && prev.u && prev.u === cur.u &&
+                prev.s === cur.s && prev.x === cur.x && prev.y === cur.y &&
+                (typeof isFree !== 'function' || isFree(toId)))) continue;
+          return toId;
+        }
+        if (typeof isFree === 'function' && !isFree(toId)) continue;
+        const v = getSlot(fromId);
+        if (v) setSlot(toId, Object.assign({}, v));
+        return toId;
+      }
+      return null;
+    }
+
+    constructor() {
+      super();
+      const root = this.shadowRoot ||
+        this.attachShadow({ mode: 'open', clonable: true });
+      root.innerHTML =
+        '<style>' + stylesheet + '</style>' +
+        '<div class="frame" part="frame">' +
+        '  <img part="image" alt="" draggable="false" style="display:none">' +
+        '  <div class="empty" part="empty">' + icon +
+        '    <div class="cap"></div>' +
+        '    <div class="sub">or <u>browse files</u></div></div>' +
+        '  <div class="attr-error" part="attribution-error">' + warnIcon +
+        '    <div class="cap">This photo needs attribution</div></div>' +
+        '  <div class="loading" part="loading"></div>' +
+        '  <div class="ring" part="ring"></div>' +
+        '</div>' +
+        '<span class="credit" part="credit"></span>' +
+        '<div class="spill" popover="manual" data-dc-edit-transparent>' +
+        '  <img class="ghost" alt="" draggable="false">' +
+        '  <div class="handle" data-c="nw"></div><div class="handle" data-c="ne"></div>' +
+        '  <div class="handle" data-c="sw"></div><div class="handle" data-c="se"></div>' +
+        '</div>' +
+        '<div class="ctl" popover="manual" data-dc-edit-transparent><button data-act="replace" title="Replace image">Replace</button>' +
+        '  <button data-act="edit" title="Reframe image">Edit</button></div>' +
+        '<input type="file" accept="' + ACCEPT.join(',') + '" hidden>';
+      this._frame = root.querySelector('.frame');
+      this._ring = root.querySelector('.ring');
+      this._img = root.querySelector('.frame img');
+      this._empty = root.querySelector('.empty');
+      this._cap = root.querySelector('.cap');
+      this._sub = root.querySelector('.sub');
+      this._spill = root.querySelector('.spill');
+      this._ctl = root.querySelector('.ctl');
+      this._credit = root.querySelector('.credit');
+      this._attrError = root.querySelector('.attr-error');
+      this._credit.addEventListener('click', (e) => e.stopPropagation());
+      this._credit.addEventListener('dblclick', (e) => e.stopPropagation());
+      this._ghost = root.querySelector('.ghost');
+      this._err = null;
+      this._input = root.querySelector('input');
+      this._depth = 0;
+      this._gen = 0;
+      this._swapGen = 0;
+      this._loadPending = false;
+      this._hidShowing = false;
+      this._view = { s: 1, x: 0, y: 0 };
+      this._subFn = () => this._render();
+      this._empty.addEventListener('click', () => this._input.click());
+      root.addEventListener('click', (e) => {
+        const act = e.target && e.target.getAttribute && e.target.getAttribute('data-act');
+        if (!act) return;
+        if (!this.hasAttribute('data-editable')) return;
+        if (act === 'replace') {
+          this._exitReframe(true);
+          this.dispatchEvent(new CustomEvent('image-slot:pick', {
+            bubbles: true, composed: true, detail: { id: this.id || null }
+          }));
+        }
+        if (act === 'edit') {
+          if (!this._reframes()) return;
+          if (this.hasAttribute('data-reframe')) this._exitReframe(true);
+          else this._enterReframe();
+        }
+      });
+      this._input.addEventListener('change', () => {
+        const f = this._input.files && this._input.files[0];
+        if (f) this._ingest(f);
+        this._input.value = '';
+      });
+      this._img.addEventListener('load', () => {
+        this._loadPending = false;
+        this._releaseMask(true);
+        this._applyView();
+      });
+      this._img.addEventListener('error', () => {
+        this._loadPending = false;
+        this._releaseMask(true);
+      });
+      this.addEventListener('dblclick', (e) => {
+        if (!this.hasAttribute('data-editable') || !this._reframes()) return;
+        e.preventDefault();
+        if (this.hasAttribute('data-reframe')) this._exitReframe(true);
+        else this._enterReframe();
+      });
+      this._spill.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0 || !this.hasAttribute('data-reframe')) return;
+        e.preventDefault();
+        e.stopPropagation();
+        this._spill.setPointerCapture(e.pointerId);
+        const rect = this.getBoundingClientRect();
+        const fw = rect.width || 1, fh = rect.height || 1;
+        const corner = e.target.getAttribute && e.target.getAttribute('data-c');
+        let move;
+        if (corner) {
+          const iw = this._img.naturalWidth || 1, ih = this._img.naturalHeight || 1;
+          const contain = (this.getAttribute('fit') || 'cover').toLowerCase() === 'contain';
+          const base = contain ? Math.min(fw / iw, fh / ih) : Math.max(fw / iw, fh / ih);
+          const sx = corner.includes('e') ? 1 : -1;
+          const sy = corner.includes('s') ? 1 : -1;
+          const s0 = this._view.s;
+          const w0 = iw * base * s0, h0 = ih * base * s0;
+          const cx0 = (50 + this._view.x) / 100 * fw;
+          const cy0 = (50 + this._view.y) / 100 * fh;
+          const ox = cx0 - sx * w0 / 2, oy = cy0 - sy * h0 / 2;
+          const diag0 = Math.hypot(w0, h0);
+          const ux = sx * w0 / diag0, uy = sy * h0 / diag0;
+          move = (ev) => {
+            const proj = (ev.clientX - rect.left - ox) * ux +
+                         (ev.clientY - rect.top - oy) * uy;
+            const s = clampS(s0 * proj / diag0);
+            const d = diag0 * s / s0;
+            this._view.s = s;
+            this._view.x = (ox + ux * d / 2) / fw * 100 - 50;
+            this._view.y = (oy + uy * d / 2) / fh * 100 - 50;
+            this._clampView();
+            this._applyView();
+          };
+        } else {
+          this.setAttribute('data-panning', '');
+          const start = { px: e.clientX, py: e.clientY, x: this._view.x, y: this._view.y };
+          move = (ev) => {
+            this._view.x = start.x + (ev.clientX - start.px) / fw * 100;
+            this._view.y = start.y + (ev.clientY - start.py) / fh * 100;
+            this._clampView();
+            this._applyView();
+          };
+        }
+        const up = () => {
+          try { this._spill.releasePointerCapture(e.pointerId); } catch {}
+          this._spill.removeEventListener('pointermove', move);
+          this._spill.removeEventListener('pointerup', up);
+          this._spill.removeEventListener('pointercancel', up);
+          this.removeAttribute('data-panning');
+          this._dragUp = null;
+        };
+        this._dragUp = up;
+        this._spill.addEventListener('pointermove', move);
+        this._spill.addEventListener('pointerup', up);
+        this._spill.addEventListener('pointercancel', up);
+      });
+      this.addEventListener('wheel', (e) => {
+        if (!this.hasAttribute('data-reframe')) return;
+        e.preventDefault();
+        const r = this.getBoundingClientRect();
+        const cx = (e.clientX - r.left) / r.width * 100 - 50;
+        const cy = (e.clientY - r.top) / r.height * 100 - 50;
+        const prev = this._view.s;
+        const next = clampS(prev * Math.pow(1.0015, -e.deltaY));
+        if (next === prev) return;
+        const k = next / prev;
+        this._view.s = next;
+        this._view.x = cx * (1 - k) + this._view.x * k;
+        this._view.y = cy * (1 - k) + this._view.y * k;
+        this._clampView();
+        this._applyView();
+      }, { passive: false });
+    }
+
+    connectedCallback() {
+      if (!this.id && !ImageSlot._warned) {
+        ImageSlot._warned = true;
+        console.warn('<image-slot> without an id will not persist its dropped image.');
+      }
+      this.addEventListener('dragenter', this);
+      this.addEventListener('dragover', this);
+      this.addEventListener('dragleave', this);
+      this.addEventListener('drop', this);
+      subs.add(this._subFn);
+      this.addEventListener('pointerenter', this._subFn);
+      this._ro = new ResizeObserver(() => this._render());
+      this._ro.observe(this);
+      load();
+      this._render();
+    }
+
+    disconnectedCallback() {
+      subs.delete(this._subFn);
+      this.removeEventListener('pointerenter', this._subFn);
+      this.removeEventListener('dragenter', this);
+      this.removeEventListener('dragover', this);
+      this.removeEventListener('dragleave', this);
+      this.removeEventListener('drop', this);
+      if (this._ro) { this._ro.disconnect(); this._ro = null; }
+      this._exitReframe(false);
+    }
+
+    _enterReframe() {
+      if (this.hasAttribute('data-reframe')) return;
+      this.setAttribute('data-reframe', '');
+      this._signalReframe(true);
+      this._pagehide = () => { this._exitReframe(true); flushNow(); };
+      window.addEventListener('pagehide', this._pagehide);
+      try { this._spill.showPopover(); } catch {}
+      try { this._ctl.showPopover(); } catch {}
+      this._reposition = () => { if (this.hasAttribute('data-reframe')) this._applyView(); };
+      window.addEventListener('scroll', this._reposition, true);
+      window.addEventListener('resize', this._reposition);
+      this._lastRect = '';
+      this._watch = () => {
+        if (!this.hasAttribute('data-reframe')) return;
+        const r = this.getBoundingClientRect();
+        const key = r.left + ',' + r.top + ',' + r.width + ',' + r.height;
+        if (key !== this._lastRect) { this._lastRect = key; this._applyView(); }
+        this._watchId = requestAnimationFrame(this._watch);
+      };
+      this._watchId = requestAnimationFrame(this._watch);
+      this._applyView();
+      this._outside = (e) => {
+        if (e.composedPath && e.composedPath().includes(this)) return;
+        this._exitReframe(true);
+      };
+      this._esc = (e) => { if (e.key === 'Escape') this._exitReframe(true); };
+      document.addEventListener('pointerdown', this._outside, true);
+      document.addEventListener('keydown', this._esc, true);
+    }
+
+    _exitReframe(commit) {
+      if (!this.hasAttribute('data-reframe')) return;
+      if (this._dragUp) this._dragUp();
+      this.removeAttribute('data-reframe');
+      this.removeAttribute('data-panning');
+      if (this._outside) document.removeEventListener('pointerdown', this._outside, true);
+      if (this._esc) document.removeEventListener('keydown', this._esc, true);
+      this._outside = this._esc = null;
+      if (this._reposition) {
+        window.removeEventListener('scroll', this._reposition, true);
+        window.removeEventListener('resize', this._reposition);
+        this._reposition = null;
+      }
+      if (this._watchId) { cancelAnimationFrame(this._watchId); this._watchId = 0; }
+      if (this._pagehide) {
+        window.removeEventListener('pagehide', this._pagehide);
+        this._pagehide = null;
+      }
+      try { this._spill.hidePopover(); } catch {}
+      try { this._ctl.hidePopover(); } catch {}
+      this._ctl.style.left = ''; this._ctl.style.top = '';
+      if (commit) this._commitView();
+      this._signalReframe(false);
+    }
+
+    _signalReframe(active) {
+      const target = this.isConnected ? this : document;
+      target.dispatchEvent(new CustomEvent('image-slot:reframe', {
+        bubbles: true, composed: true,
+        detail: { active: active, id: this.id || null }
+      }));
+    }
+
+    openFilePicker() { this._exitReframe(true); this._input.click(); }
+
+    attributeChangedCallback(name, oldVal, newVal) {
+      if (name === 'src' && oldVal !== newVal) {
+        this._gen++;
+        this._swapGen = 0;
+      }
+      if (this.shadowRoot) this._render();
+    }
+
+    handleEvent(e) {
+      if (e.type === 'dragenter' || e.type === 'dragover') {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+        if (e.type === 'dragenter') this._depth++;
+        this.setAttribute('data-over', '');
+      } else if (e.type === 'dragleave') {
+        if (--this._depth <= 0) { this._depth = 0; this.removeAttribute('data-over'); }
+      } else if (e.type === 'drop') {
+        e.preventDefault();
+        e.stopPropagation();
+        this._depth = 0;
+        this.removeAttribute('data-over');
+        const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+        if (f) this._ingest(f);
+      }
+    }
+
+    async _ingest(file) {
+      this._setError(null);
+      if (!file || ACCEPT.indexOf(file.type) < 0) {
+        this._setError('Drop a PNG, JPEG, WebP, or AVIF image.');
+        return;
+      }
+      const gen = ++this._gen;
+      if (this.hasAttribute('data-filled')) {
+        this.setAttribute('data-swapping', '');
+        this._swapGen = gen;
+      }
+      try {
+        const w = this.clientWidth || this.offsetWidth || MAX_DIM;
+        const url = await toDataUrl(file, w);
+        if (gen !== this._gen) return;
+        this._exitReframe(false);
+        this._swapGen = 0;
+        const val = { u: url, s: 1, x: 0, y: 0 };
+        setSlot(this.id || '', val);
+        if (!this.id) { this._local = val; this._render(); }
+      } catch (err) {
+        if (gen !== this._gen) return;
+        this._swapGen = 0;
+        this._releaseMask();
+        this._setError('Could not read that image.');
+        console.warn('<image-slot> ingest failed:', err);
+      }
+    }
+
+    _setError(msg) {
+      if (this._err) { this._err.remove(); this._err = null; }
+      if (!msg) return;
+      const d = document.createElement('div');
+      d.className = 'err'; d.textContent = msg;
+      this.shadowRoot.appendChild(d);
+      this._err = d;
+      setTimeout(() => { if (this._err === d) { d.remove(); this._err = null; } }, 3000);
+    }
+
+    _reframes() {
+      return this.hasAttribute('data-filled');
+    }
+
+    _releaseMask(settled) {
+      if (
+        !this._swapGen &&
+        !this._loadPending &&
+        (settled || this._img.complete)
+      ) {
+        this.removeAttribute('data-swapping');
+      }
+    }
+
+    _geom() {
+      const iw = this._img.naturalWidth, ih = this._img.naturalHeight;
+      const fw = this.clientWidth, fh = this.clientHeight;
+      if (!iw || !ih || !fw || !fh) return null;
+      const contain = (this.getAttribute('fit') || 'cover').toLowerCase() === 'contain';
+      const base = contain
+        ? Math.min(fw / iw, fh / ih)
+        : Math.max(fw / iw, fh / ih);
+      return { iw, ih, fw, fh, base };
+    }
+
+    _clampView() {
+      const g = this._geom();
+      if (!g) return;
+      const mx = Math.max(0, (g.iw * g.base * this._view.s / g.fw - 1) * 50);
+      const my = Math.max(0, (g.ih * g.base * this._view.s / g.fh - 1) * 50);
+      this._view.x = Math.max(-mx, Math.min(mx, this._view.x));
+      this._view.y = Math.max(-my, Math.min(my, this._view.y));
+    }
+
+    _applyView() {
+      const g = this._geom();
+      if (this.hasAttribute('data-reframe')) {
+        let onTop = false;
+        try { onTop = this._ctl.matches(':popover-open'); } catch {}
+        if (onTop) {
+          const r = this.getBoundingClientRect();
+          this._ctl.style.left = (r.right - 8) + 'px';
+          this._ctl.style.top = (r.top + 8) + 'px';
+        }
+      }
+      if (!g) {
+        const contain = (this.getAttribute('fit') || 'cover').toLowerCase() === 'contain';
+        this._img.style.width = '100%';
+        this._img.style.height = '100%';
+        this._img.style.left = '50%';
+        this._img.style.top = '50%';
+        this._img.style.objectFit = contain ? 'contain' : 'cover';
+        return;
+      }
+      const k = g.base * this._view.s;
+      const w = (g.iw * k / g.fw * 100) + '%';
+      const h = (g.ih * k / g.fh * 100) + '%';
+      const l = (50 + this._view.x) + '%';
+      const t = (50 + this._view.y) + '%';
+      this._img.style.width = w; this._img.style.height = h;
+      this._img.style.left = l; this._img.style.top = t;
+      this._img.style.objectFit = '';
+      if (this.hasAttribute('data-reframe')) {
+        const r = this.getBoundingClientRect();
+        const sx = g.fw ? r.width / g.fw : 1;
+        const sy = g.fh ? r.height / g.fh : 1;
+        this._spill.style.width = (g.iw * k * sx) + 'px';
+        this._spill.style.height = (g.ih * k * sy) + 'px';
+        this._spill.style.left = (r.left + (50 + this._view.x) / 100 * r.width) + 'px';
+        this._spill.style.top = (r.top + (50 + this._view.y) / 100 * r.height) + 'px';
+      }
+    }
+
+    _commitView() {
+      const v = { s: this._view.s, x: this._view.x, y: this._view.y };
+      if (this._userUrl) v.u = this._userUrl;
+      if (this.id) setSlot(this.id, v);
+      else { this._local = v; }
+    }
+
+    _render() {
+      const mask = this.getAttribute('mask');
+      const shape = (this.getAttribute('shape') || 'rounded').toLowerCase();
+      let radius = '';
+      if (shape === 'circle') radius = '50%';
+      else if (shape === 'pill') radius = '9999px';
+      else if (shape === 'rounded') {
+        const n = parseFloat(this.getAttribute('radius'));
+        radius = (Number.isFinite(n) ? n : 12) + 'px';
+      }
+      this._frame.style.borderRadius = mask ? '' : radius;
+      this._frame.style.clipPath = mask || '';
+      this._ring.style.borderRadius = mask ? '' : radius;
+      this._ring.style.display = mask ? 'none' : '';
+
+      const editable = !!(window.omelette && window.omelette.writeFile);
+      this.toggleAttribute('data-editable', editable);
+      this._sub.style.display = editable ? '' : 'none';
+
+      let stored = this.id ? getSlot(this.id) : this._local;
+      if (stored && stored.u && !/^data:image\//i.test(stored.u)) stored = null;
+      const srcAttr = this.getAttribute('src') || '';
+      this._userUrl = (stored && stored.u) || null;
+      const url = this._userUrl || srcAttr;
+      if (!this.hasAttribute('data-reframe')) {
+        this._view = {
+          s: stored && Number.isFinite(stored.s) ? clampS(stored.s) : 1,
+          x: stored && Number.isFinite(stored.x) ? stored.x : 0,
+          y: stored && Number.isFinite(stored.y) ? stored.y : 0,
+        };
+      }
+      this._cap.textContent = this.getAttribute('placeholder') || 'Drop an image';
+      const credit = (this.getAttribute('credit') || '').trim();
+      const attrError = !!(
+        !credit && !this._userUrl && srcAttr && isUnsplashHost(srcAttr)
+      );
+      this.toggleAttribute('data-attribution-error', attrError);
+      if (url && !attrError) {
+        const prev = this._img.getAttribute('src');
+        if (prev !== url) {
+          if (prev || this._hidShowing) this.setAttribute('data-swapping', '');
+          this._loadPending = true;
+          this._img.src = url;
+          this._ghost.src = url;
+        } else {
+          this._releaseMask();
+        }
+        this._hidShowing = false;
+        this._img.style.display = 'block';
+        this._empty.style.display = 'none';
+        this.setAttribute('data-filled', '');
+        this._clampView();
+        this._applyView();
+      } else {
+        this.removeAttribute('data-swapping');
+        this._loadPending = false;
+        this._hidShowing = attrError && !!this._img.getAttribute('src');
+        this._img.style.display = 'none';
+        this._img.removeAttribute('src');
+        this._ghost.removeAttribute('src');
+        this._empty.style.display = attrError ? 'none' : 'flex';
+        this.removeAttribute('data-filled');
+      }
+
+      const showCredit = !!(url && credit && !this._userUrl && !attrError);
+      this._credit.textContent = '';
+      if (showCredit) {
+        let href = '';
+        const rawHref = this.getAttribute('credit-href') || '';
+        if (rawHref) {
+          try {
+            const u = new URL(rawHref, document.baseURI);
+            if (u.protocol === 'http:' || u.protocol === 'https:') {
+              href = withReferral(u.href);
+            }
+          } catch {}
+        }
+        const mkLink = (text, linkHref) => {
+          const a = document.createElement('a');
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener noreferrer');
+          a.setAttribute('href', linkHref);
+          a.textContent = text;
+          return a;
+        };
+        const m = /^Photo by (.+) on Unsplash$/.exec(credit);
+        if (m) {
+          this._credit.appendChild(document.createTextNode('Photo by '));
+          this._credit.appendChild(
+            href ? mkLink(m[1], href) : document.createTextNode(m[1])
+          );
+          this._credit.appendChild(document.createTextNode(' on '));
+          this._credit.appendChild(mkLink('Unsplash', UNSPLASH_HOMEPAGE_HREF));
+        } else if (href) {
+          this._credit.appendChild(mkLink(credit, href));
+        } else {
+          this._credit.textContent = credit;
+        }
+      }
+      this.toggleAttribute('data-credit', showCredit);
+    }
+  }
+
+  if (!customElements.get('image-slot')) {
+    customElements.define('image-slot', ImageSlot);
+  }
+})();
+</script>
+<style>
+body { margin:0; background:#DED7C9; }
+a { color:#6B1E2B; text-decoration:none; }
+a:hover { color:#8C2C3B; }
+</style>
+</helmet>
+
+<div style="padding:56px 40px 72px; width:max-content; margin:0 auto; background:#DED7C9; font-family:'Lora',Georgia,serif;">
+<x-import component-from-global-scope="ChromeWindow" url="libreriacallao.com.ar" tabs="{{ tabs }}" width="{{ winW }}" height="{{ winH }}" style="flex:none; min-width:1440px" hint-size="1440px,3000px">
+
+<div style="position:relative; width:100%; min-height:100%; background:#F7F3E9; color:#201F1D; font-family:'Lora',Georgia,serif;">
+
+<sc-if value="{{ showGrain }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute; inset:0; pointer-events:none; z-index:5; opacity:0.055; mix-blend-mode:multiply; background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22180%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22 stitchTiles=%22stitch%22/></filter><rect width=%22180%22 height=%22180%22 filter=%22url(%23n)%22/></svg>'); background-size:180px 180px;"></div>
+</sc-if>
+
+<sc-if value="{{ showAnnounce }}" hint-placeholder-val="{{ true }}">
+<div style="background:#1C2B46; color:#EFE9DC; font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase; display:flex; align-items:center; justify-content:center; gap:28px; padding:11px 40px;">
+<span>Envío sin cargo desde $80.000</span>
+<span style="opacity:0.35;">·</span>
+<span>Retiro en Av. Callao 1234, Buenos Aires</span>
+<span style="opacity:0.35;">·</span>
+<span style="color:#E1AD66;">3 y 6 cuotas sin interés</span>
+</div>
+</sc-if>
+
+<header style="position:relative; z-index:2; background:#F7F3E9; border-bottom:1px solid rgba(28,43,70,0.13);">
+  <div style="max-width:1240px; margin:0 auto; padding:26px 48px 22px; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:48px;">
+    <div style="display:flex; flex-direction:column; gap:5px;">
+      <span style="font-family:'Cormorant Garamond',Garamond,serif; font-weight:500; font-size:27px; line-height:1; letter-spacing:0.13em; color:#6B1E2B;">LIBRERÍA CALLAO</span>
+      <span style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:9.5px; letter-spacing:0.24em; text-transform:uppercase; color:#7A6350;">Libros y papelería · Buenos Aires</span>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:10px; max-width:520px; width:100%; justify-self:center; border:1px solid rgba(28,43,70,0.22); border-radius:3px; background:#FFFDF7; padding:0 14px; height:44px;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#7A6350" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path></svg>
+      <span style="flex:1; font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:14px; color:#8C857A;">Buscar productos…</span>
+      <span style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:10px; letter-spacing:0.1em; color:#A8A096; border:1px solid rgba(28,43,70,0.15); border-radius:3px; padding:2px 6px;">⌘K</span>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:22px; font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;">
+      <a href="#" style="display:flex; align-items:center; gap:8px; font-size:13px; color:#1C2B46;">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1C2B46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 0 0-7.1 7.1l8.8 8.8 8.8-8.8a5 5 0 0 0 0-7.1z"></path></svg>
+        <span>Favoritos</span>
+      </a>
+      <div style="width:1px; height:22px; background:rgba(28,43,70,0.15);"></div>
+      <a href="#" style="display:flex; align-items:center; gap:9px; font-size:13px; color:#1C2B46;">
+        <span style="position:relative; display:block;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1C2B46" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 4 6v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V6l-2-4H6z"></path><path d="M4 6h16"></path><path d="M15 10a3 3 0 0 1-6 0"></path></svg>
+          <span style="position:absolute; top:-7px; right:-9px; min-width:17px; height:17px; border-radius:9px; background:#6B1E2B; color:#F7F3E9; font-size:10.5px; font-weight:600; display:flex; align-items:center; justify-content:center; padding:0 4px;">3</span>
+        </span>
+        <span>Carrito</span>
+        <span style="color:#7A6350;">$41.650</span>
+      </a>
+    </div>
+  </div>
+
+  <nav style="max-width:1240px; margin:0 auto; padding:0 48px 16px; display:flex; align-items:center; justify-content:space-between; font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;">
+    <div style="display:flex; align-items:center; gap:34px;">
+      <a href="#" style="font-size:13.5px; letter-spacing:0.1em; text-transform:uppercase; color:#1C2B46; padding-bottom:4px; border-bottom:2px solid #6B1E2B;">Librería</a>
+      <a href="#" style="font-size:13.5px; letter-spacing:0.1em; text-transform:uppercase; color:#3A3733; padding-bottom:4px; border-bottom:2px solid transparent;" style-hover="border-bottom:2px solid #B68235; color:#1C2B46;">Escolar</a>
+      <a href="#" style="font-size:13.5px; letter-spacing:0.1em; text-transform:uppercase; color:#3A3733; padding-bottom:4px; border-bottom:2px solid transparent;" style-hover="border-bottom:2px solid #B68235; color:#1C2B46;">Oficina</a>
+      <a href="#" style="font-size:13.5px; letter-spacing:0.1em; text-transform:uppercase; color:#3A3733; padding-bottom:4px; border-bottom:2px solid transparent;" style-hover="border-bottom:2px solid #B68235; color:#1C2B46;">Papelería</a>
+      <a href="#" style="font-size:13.5px; letter-spacing:0.1em; text-transform:uppercase; color:#3A3733; padding-bottom:4px; border-bottom:2px solid transparent;" style-hover="border-bottom:2px solid #B68235; color:#1C2B46;">Agendas</a>
+    </div>
+    <div style="display:flex; align-items:center; gap:26px; font-size:12.5px; color:#7A6350;">
+      <a href="#" style="color:#7A6350;">Novedades</a>
+      <a href="#" style="color:#7A6350;">Regalos</a>
+      <a href="#" style="color:#1C2B46;">Mi cuenta</a>
+    </div>
+  </nav>
+</header>
+
+<section style="position:relative; z-index:2; border-bottom:1px solid rgba(28,43,70,0.13);">
+  <div style="max-width:1240px; margin:0 auto; padding:0 48px; display:grid; grid-template-columns:minmax(480px,0.86fr) minmax(0,1.14fr); align-items:stretch; gap:0;">
+    <div style="padding:78px 56px 78px 0; display:flex; flex-direction:column; justify-content:center; border-right:1px solid rgba(28,43,70,0.13);">
+      <span style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:10.5px; letter-spacing:0.26em; text-transform:uppercase; color:#B68235; margin-bottom:22px;">Desde 1948 · Barrio de Callao</span>
+      <h1 style="font-family:'Cormorant Garamond',Garamond,serif; font-weight:400; font-size:60px; line-height:1.04; letter-spacing:-0.015em; color:#1C2B46; margin:0 0 26px; text-wrap:pretty;">Todo lo que necesitás para <em style="font-style:italic; color:#6B1E2B;">leer, estudiar y crear</em></h1>
+      <p style="font-size:16.5px; line-height:1.72; color:#4A4640; max-width:38ch; margin:0 0 34px; text-wrap:pretty;">Libros, útiles y objetos que inspiran. Seleccionados con criterio, elegidos para vos.</p>
+      <div style="display:flex; align-items:center; gap:20px;">
+        <a href="#" style="display:inline-flex; align-items:center; gap:10px; background:#6B1E2B; color:#F7F3E9; font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:14px; letter-spacing:0.08em; text-transform:uppercase; padding:15px 30px; border-radius:3px;" style-hover="background:#54151F;">
+          Ver productos
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F7F3E9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a href="#" style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:14px; color:#1C2B46; border-bottom:1px solid rgba(28,43,70,0.35); padding-bottom:3px;" style-hover="border-bottom-color:#B68235; color:#6B1E2B;">Ver catálogo escolar 2026</a>
+      </div>
+      <div style="margin-top:52px; padding-top:24px; border-top:1px solid rgba(28,43,70,0.13); display:flex; gap:40px; font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:11.5px; letter-spacing:0.05em; color:#7A6350;">
+        <span>+12.000 títulos</span>
+        <span>Envíos a todo el país</span>
+        <span>Atención por WhatsApp</span>
+      </div>
+    </div>
+    <div style="padding:56px 0 56px 56px; display:flex; align-items:center;">
+      <figure style="margin:0; width:100%;">
+        <div class="plate" style="width:100%; height:474px; border-radius:2px;">
+          <image-slot id="callao-hero" shape="rect" fit="cover" placeholder="Still life: libros, cuaderno y pluma"></image-slot>
+        </div>
+        <figcaption style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color:#8C857A; margin-top:12px; text-align:right;">Mesa de novedades · Av. Callao</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section style="position:relative; z-index:2; background:#F1EBDD; border-bottom:1px solid rgba(28,43,70,0.13);">
+  <div style="max-width:1240px; margin:0 auto; padding:0 48px; display:grid; grid-template-columns:repeat(3,1fr);">
+    <div style="padding:34px 40px 34px 0; display:flex; gap:18px; align-items:flex-start;">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B68235" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px;"><path d="M3 9.5 5 4h14l2 5.5"></path><path d="M4 9.5h16V20H4z"></path><path d="M9.5 20v-6h5v6"></path></svg>
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',Garamond,serif; font-weight:600; font-size:19px; line-height:1.2; color:#1C2B46; margin:0 0 5px;">Retiro en sucursal</h3>
+        <p style="font-size:13.5px; line-height:1.6; color:#5C574F; margin:0;">Comprá online y retirá en Av. Callao 1234 dentro de las 24 h, sin cargo.</p>
+      </div>
+    </div>
+    <div style="padding:34px 40px; display:flex; gap:18px; align-items:flex-start; border-left:1px solid rgba(28,43,70,0.13); border-right:1px solid rgba(28,43,70,0.13);">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B68235" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px;"><path d="M2 7h11v10H2z"></path><path d="M13 10h4.5l3.5 3.5V17H13z"></path><circle cx="6.5" cy="19" r="1.8"></circle><circle cx="17" cy="19" r="1.8"></circle></svg>
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',Garamond,serif; font-weight:600; font-size:19px; line-height:1.2; color:#1C2B46; margin:0 0 5px;">Envíos a todo el país</h3>
+        <p style="font-size:13.5px; line-height:1.6; color:#5C574F; margin:0;">Correo Argentino y Andreani. CABA y GBA en 48 h, interior de 3 a 5 días.</p>
+      </div>
+    </div>
+    <div style="padding:34px 0 34px 40px; display:flex; gap:18px; align-items:flex-start;">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B68235" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px;"><path d="M12 3l7.5 3v6c0 4.2-3 7.4-7.5 9-4.5-1.6-7.5-4.8-7.5-9V6z"></path><path d="M9 12l2.2 2.2L15.5 10"></path></svg>
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',Garamond,serif; font-weight:600; font-size:19px; line-height:1.2; color:#1C2B46; margin:0 0 5px;">Compra segura</h3>
+        <p style="font-size:13.5px; line-height:1.6; color:#5C574F; margin:0;">Pago protegido, factura A o B y cambios sin vueltas dentro de los 30 días.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="position:relative; z-index:2; padding:78px 0 84px;">
+  <div style="max-width:1240px; margin:0 auto; padding:0 48px;">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:40px; padding-bottom:22px; border-bottom:1px solid rgba(28,43,70,0.2);">
+      <div>
+        <span style="display:block; font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:10.5px; letter-spacing:0.26em; text-transform:uppercase; color:#B68235; margin-bottom:12px;">Selección de la casa</span>
+        <h2 style="font-family:'Cormorant Garamond',Garamond,serif; font-weight:400; font-size:44px; line-height:1; letter-spacing:-0.01em; color:#1C2B46; margin:0;">Destacados</h2>
+      </div>
+      <div style="display:flex; align-items:center; gap:26px; font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase; padding-bottom:6px;">
+        <span style="color:#1C2B46; border-bottom:1px solid #6B1E2B; padding-bottom:3px;">Todos</span>
+        <span style="color:#8C857A;">Libros</span>
+        <span style="color:#8C857A;">Papelería</span>
+        <span style="color:#8C857A;">Escritura</span>
+        <a href="#" style="color:#6B1E2B;">Ver todo (248)</a>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:28px; margin-top:36px;">
+
+      <article style="display:flex; flex-direction:column; border:1px solid rgba(28,43,70,0.14); border-radius:4px; background:#FFFDF7; overflow:hidden;" style-hover="border-color:rgba(182,130,53,0.75); box-shadow:0 3px 10px rgba(45,43,43,0.13);">
+        <div style="position:relative; height:250px; background:#F1EBDD; border-bottom:1px solid rgba(28,43,70,0.1);">
+          <image-slot id="callao-p1" shape="rect" fit="cover" placeholder="Libro de tapa dura sobre fondo cálido"></image-slot>
+          <sc-if value="{{ showBadges }}" hint-placeholder-val="{{ true }}">
+          <span style="position:absolute; top:12px; left:12px; z-index:2; pointer-events:none; background:#1C2B46; color:#EFE9DC; font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:9.5px; letter-spacing:0.16em; text-transform:uppercase; padding:5px 9px; border-radius:2px;">Novedad</span>
+          </sc-if>
+        </div>
+        <div style="padding:18px 18px 20px; display:flex; flex-direction:column; flex:1; gap:8px;">
+          <span style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:#B68235;">Librería · Ensayo</span>
+          <h3 style="font-family:'Cormorant Garamond',Garamond,serif; font-weight:600; font-size:20px; line-height:1.18; color:#1C2B46; margin:0;">El arte de la lectura lenta</h3>
+          <p style="font-size:12.5px; line-height:1.6; color:#6B665E; margin:0;">Ensayos sobre el oficio de leer. Tapa dura, 312 páginas.</p>
+          <div style="margin-top:auto; padding-top:14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <span style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:17px; font-weight:600; color:#6B1E2B; font-variant-numeric:tabular-nums;">$24.900</span>
+            <a href="#" style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#1C2B46; border:1px solid rgba(28,43,70,0.28); border-radius:3px; padding:7px 11px;" style-hover="border-color:#6B1E2B; color:#6B1E2B; background:rgba(107,30,43,0.06);">Agregar</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display:flex; flex-direction:column; border:1px solid rgba(28,43,70,0.14); border-radius:4px; background:#FFFDF7; overflow:hidden;" style-hover="border-color:rgba(182,130,53,0.75); box-shadow:0 3px 10px rgba(45,43,43,0.13);">
+        <div style="position:relative; height:250px; background:#F1EBDD; border-bottom:1px solid rgba(28,43,70,0.1);">
+          <image-slot id="callao-p2" shape="rect" fit="cover" placeholder="Cuaderno de tapa dura con elástico"></image-slot>
+        </div>
+        <div style="padding:18px 18px 20px; display:flex; flex-direction:column; flex:1; gap:8px;">
+          <span style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:#B68235;">Papelería · Cuadernos</span>
+          <h3 style="font-family:'Cormorant Garamond',Garamond,serif; font-weight:600; font-size:20px; line-height:1.18; color:#1C2B46; margin:0;">Cuaderno Callao A5</h3>
+          <p style="font-size:12.5px; line-height:1.6; color:#6B665E; margin:0;">Papel marfil 100 g, hoja punteada. Cosido y con elástico.</p>
+          <div style="margin-top:auto; padding-top:14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <span style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:17px; font-weight:600; color:#6B1E2B; font-variant-numeric:tabular-nums;">$18.400</span>
+            <a href="#" style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#1C2B46; border:1px solid rgba(28,43,70,0.28); border-radius:3px; padding:7px 11px;" style-hover="border-color:#6B1E2B; color:#6B1E2B; background:rgba(107,30,43,0.06);">Agregar</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display:flex; flex-direction:column; border:1px solid rgba(28,43,70,0.14); border-radius:4px; background:#FFFDF7; overflow:hidden;" style-hover="border-color:rgba(182,130,53,0.75); box-shadow:0 3px 10px rgba(45,43,43,0.13);">
+        <div style="position:relative; height:250px; background:#F1EBDD; border-bottom:1px solid rgba(28,43,70,0.1);">
+          <image-slot id="callao-p3" shape="rect" fit="cover" placeholder="Pluma fuente apoyada junto a un tintero"></image-slot>
+          <sc-if value="{{ showBadges }}" hint-placeholder-val="{{ true }}">
+          <span style="position:absolute; top:12px; left:12px; z-index:2; pointer-events:none; background:#F7F3E9; color:#7D5411; border:1px solid rgba(182,130,53,0.6); font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:9.5px; letter-spacing:0.16em; text-transform:uppercase; padding:4px 9px; border-radius:2px;">Edición limitada</span>
+          </sc-if>
+        </div>
+        <div style="padding:18px 18px 20px; display:flex; flex-direction:column; flex:1; gap:8px;">
+          <span style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:#B68235;">Escritura · Plumas</span>
+          <h3 style="font-family:'Cormorant Garamond',Garamond,serif; font-weight:600; font-size:20px; line-height:1.18; color:#1C2B46; margin:0;">Pluma fuente Recoleta F</h3>
+          <p style="font-size:12.5px; line-height:1.6; color:#6B665E; margin:0;">Trazo fino, resina veteada. Incluye dos cartuchos y converter.</p>
+          <div style="margin-top:auto; padding-top:14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <span style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:17px; font-weight:600; color:#6B1E2B; font-variant-numeric:tabular-nums;">$67.500</span>
+            <a href="#" style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#1C2B46; border:1px solid rgba(28,43,70,0.28); border-radius:3px; padding:7px 11px;" style-hover="border-color:#6B1E2B; color:#6B1E2B; background:rgba(107,30,43,0.06);">Agregar</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display:flex; flex-direction:column; border:1px solid rgba(28,43,70,0.14); border-radius:4px; background:#FFFDF7; overflow:hidden;" style-hover="border-color:rgba(182,130,53,0.75); box-shadow:0 3px 10px rgba(45,43,43,0.13);">
+        <div style="position:relative; height:250px; background:#F1EBDD; border-bottom:1px solid rgba(28,43,70,0.1);">
+          <image-slot id="callao-p4" shape="rect" fit="cover" placeholder="Set de resaltadores en tonos pastel"></image-slot>
+        </div>
+        <div style="padding:18px 18px 20px; display:flex; flex-direction:column; flex:1; gap:8px;">
+          <span style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:#B68235;">Escolar · Marcadores</span>
+          <h3 style="font-family:'Cormorant Garamond',Garamond,serif; font-weight:600; font-size:20px; line-height:1.18; color:#1C2B46; margin:0;">Resaltadores tono tierra ×6</h3>
+          <p style="font-size:12.5px; line-height:1.6; color:#6B665E; margin:0;">Punta biselada, tinta al agua. No traspasa el papel fino.</p>
+          <div style="margin-top:auto; padding-top:14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <span style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:17px; font-weight:600; color:#6B1E2B; font-variant-numeric:tabular-nums;">$9.750</span>
+            <a href="#" style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#1C2B46; border:1px solid rgba(28,43,70,0.28); border-radius:3px; padding:7px 11px;" style-hover="border-color:#6B1E2B; color:#6B1E2B; background:rgba(107,30,43,0.06);">Agregar</a>
+          </div>
+        </div>
+      </article>
+
+      <article style="display:flex; flex-direction:column; border:1px solid rgba(28,43,70,0.14); border-radius:4px; background:#FFFDF7; overflow:hidden;" style-hover="border-color:rgba(182,130,53,0.75); box-shadow:0 3px 10px rgba(45,43,43,0.13);">
+        <div style="position:relative; height:250px; background:#F1EBDD; border-bottom:1px solid rgba(28,43,70,0.1);">
+          <image-slot id="callao-p5" shape="rect" fit="cover" placeholder="Agenda 2026 abierta sobre escritorio"></image-slot>
+        </div>
+        <div style="padding:18px 18px 20px; display:flex; flex-direction:column; flex:1; gap:8px;">
+          <span style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:#B68235;">Agendas · 2026</span>
+          <h3 style="font-family:'Cormorant Garamond',Garamond,serif; font-weight:600; font-size:20px; line-height:1.18; color:#1C2B46; margin:0;">Agenda semanal 2026</h3>
+          <p style="font-size:12.5px; line-height:1.6; color:#6B665E; margin:0;">Semana a la vista, feriados argentinos y 16 hojas de notas.</p>
+          <div style="margin-top:auto; padding-top:14px; display:flex; align-items:center; justify-content:space-between; gap:10px;">
+            <span style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:17px; font-weight:600; color:#6B1E2B; font-variant-numeric:tabular-nums;">$31.200</span>
+            <a href="#" style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#1C2B46; border:1px solid rgba(28,43,70,0.28); border-radius:3px; padding:7px 11px;" style-hover="border-color:#6B1E2B; color:#6B1E2B; background:rgba(107,30,43,0.06);">Agregar</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section style="position:relative; z-index:2; background:#1C2B46; color:#EFE9DC;">
+  <div style="max-width:1240px; margin:0 auto; padding:0 48px; display:grid; grid-template-columns:1fr 1fr; gap:0; align-items:center;">
+    <div style="padding:72px 64px 72px 0;">
+      <span style="display:block; font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:10.5px; letter-spacing:0.26em; text-transform:uppercase; color:#E1AD66; margin-bottom:20px;">La casa</span>
+      <h2 style="font-family:'Cormorant Garamond',Garamond,serif; font-weight:400; font-size:40px; line-height:1.1; color:#F7F3E9; margin:0 0 22px; text-wrap:pretty;">Tres cuadras de Corrientes, setenta y ocho años en la misma esquina</h2>
+      <p style="font-size:15.5px; line-height:1.78; color:#CFC7B6; margin:0 0 16px; max-width:52ch; text-align:justify; hyphens:auto;">Abrimos en 1948 frente al mismo cordón de Av. Callao donde seguimos hoy. Elegimos cada título y cada cuaderno a mano: si no lo usaríamos nosotros, no entra a la mesa de novedades.</p>
+      <p style="font-size:15.5px; line-height:1.78; color:#CFC7B6; margin:0 0 32px; max-width:52ch; text-align:justify; hyphens:auto;">Nuestros libreros responden por WhatsApp de lunes a sábado y armamos pedidos escolares completos por lista de colegio.</p>
+      <div style="display:flex; gap:18px; align-items:center;">
+        <a href="#" style="display:inline-flex; align-items:center; gap:9px; border:1px solid #E1AD66; color:#E1AD66; font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13.5px; letter-spacing:0.08em; text-transform:uppercase; padding:13px 26px; border-radius:3px;" style-hover="background:rgba(225,173,102,0.14);">Conocer la librería</a>
+        <span style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:12.5px; color:#9AA3B3;">Av. Callao 1234 · Lun a sáb 9–20 h</span>
+      </div>
+    </div>
+    <div style="padding:56px 0 56px 0;">
+      <div class="plate" style="width:100%; height:400px; border-radius:2px; border-color:#243553;">
+        <image-slot id="callao-tienda" shape="rect" fit="cover" placeholder="Interior de la librería: estanterías de madera, mesa de novedades"></image-slot>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="position:relative; z-index:2; padding:64px 0; border-bottom:1px solid rgba(28,43,70,0.13);">
+  <div style="max-width:1240px; margin:0 auto; padding:0 48px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:64px;">
+    <div>
+      <h2 style="font-family:'Cormorant Garamond',Garamond,serif; font-weight:400; font-size:32px; line-height:1.15; color:#1C2B46; margin:0 0 8px;">Cartas de la librería</h2>
+      <p style="font-size:14.5px; line-height:1.65; color:#5C574F; margin:0; max-width:56ch;">Una vez por mes: novedades, recomendados de los libreros y avisos de reposición de papelería. Sin spam.</p>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div style="width:320px; height:46px; border:1px solid rgba(28,43,70,0.24); border-radius:3px; background:#FFFDF7; display:flex; align-items:center; padding:0 14px; font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:14px; color:#8C857A;">tu@correo.com.ar</div>
+      <a href="#" style="display:inline-flex; align-items:center; height:46px; padding:0 26px; background:#6B1E2B; color:#F7F3E9; font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13.5px; letter-spacing:0.08em; text-transform:uppercase; border-radius:3px;" style-hover="background:#54151F;">Suscribirme</a>
+    </div>
+  </div>
+</section>
+
+<footer style="position:relative; z-index:2; background:#F1EBDD;">
+  <div style="max-width:1240px; margin:0 auto; padding:56px 48px 30px; display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:48px;">
+    <div>
+      <span style="display:block; font-family:'Cormorant Garamond',Garamond,serif; font-weight:500; font-size:20px; letter-spacing:0.13em; color:#6B1E2B; margin-bottom:12px;">LIBRERÍA CALLAO</span>
+      <p style="font-size:13px; line-height:1.7; color:#5C574F; margin:0 0 14px; max-width:34ch;">Av. Callao 1234, C1023 CABA<br>Lunes a sábado de 9 a 20 h</p>
+      <p style="font-size:13px; line-height:1.7; color:#5C574F; margin:0;">+54 11 4372 0000<br>hola@libreriacallao.com.ar</p>
+    </div>
+    <div style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; display:flex; flex-direction:column; gap:11px;">
+      <span style="font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:#B68235; margin-bottom:4px;">Comprar</span>
+      <a href="#" style="font-size:13px; color:#3A3733;">Librería</a>
+      <a href="#" style="font-size:13px; color:#3A3733;">Escolar</a>
+      <a href="#" style="font-size:13px; color:#3A3733;">Oficina</a>
+      <a href="#" style="font-size:13px; color:#3A3733;">Papelería</a>
+      <a href="#" style="font-size:13px; color:#3A3733;">Agendas</a>
+    </div>
+    <div style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; display:flex; flex-direction:column; gap:11px;">
+      <span style="font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:#B68235; margin-bottom:4px;">Ayuda</span>
+      <a href="#" style="font-size:13px; color:#3A3733;">Envíos y retiro</a>
+      <a href="#" style="font-size:13px; color:#3A3733;">Medios de pago</a>
+      <a href="#" style="font-size:13px; color:#3A3733;">Cambios y devoluciones</a>
+      <a href="#" style="font-size:13px; color:#3A3733;">Listas escolares</a>
+      <a href="#" style="font-size:13px; color:#3A3733;">Preguntas frecuentes</a>
+    </div>
+    <div style="font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; display:flex; flex-direction:column; gap:11px;">
+      <span style="font-size:10.5px; letter-spacing:0.2em; text-transform:uppercase; color:#B68235; margin-bottom:4px;">La casa</span>
+      <a href="#" style="font-size:13px; color:#3A3733;">Nuestra historia</a>
+      <a href="#" style="font-size:13px; color:#3A3733;">Encuentros y firmas</a>
+      <a href="#" style="font-size:13px; color:#3A3733;">Venta institucional</a>
+      <a href="#" style="font-size:13px; color:#3A3733;">Trabajá con nosotros</a>
+    </div>
+  </div>
+  <div style="max-width:1240px; margin:0 auto; padding:18px 48px 34px; border-top:1px solid rgba(28,43,70,0.13); display:flex; align-items:center; justify-content:space-between; font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:11.5px; color:#8C857A;">
+    <span>© 2026 Librería Callao · Buenos Aires, Argentina</span>
+    <div style="display:flex; gap:22px;">
+      <span>Precios en pesos argentinos (ARS), IVA incluido</span>
+      <a href="#" style="color:#8C857A;">Términos</a>
+      <a href="#" style="color:#8C857A;">Privacidad</a>
+    </div>
+  </div>
+</footer>
+
+</div>
+</x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showGrain&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Ambiente&quot;},&quot;showAnnounce&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Ambiente&quot;},&quot;showBadges&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Productos&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      tabs: [{ title: 'Librería Callao — Libros y papelería' }, { title: 'Listas escolares 2026' }],
+      winW: 1440,
+      winH: 3180,
+      showGrain: this.props.showGrain ?? true,
+      showAnnounce: this.props.showAnnounce ?? true,
+      showBadges: this.props.showBadges ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
